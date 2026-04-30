@@ -1,7 +1,42 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle } from 'lucide-react';
 
 export default function Contact() {
+  const [status, setStatus] = useState('idle'); // idle, submitting, success, error
+  const [resultMessage, setResultMessage] = useState('');
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('submitting');
+    const formData = new FormData(e.target);
+
+    // IMPORTANT: Replace this placeholder with your actual Web3Forms access key
+    // You can get one for free at https://web3forms.com/
+    formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY_HERE");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setStatus('success');
+        setResultMessage("Message sent successfully! We'll get back to you soon.");
+        e.target.reset();
+      } else {
+        setStatus('error');
+        setResultMessage(data.message || "Something went wrong. Please try again.");
+      }
+    } catch (error) {
+      setStatus('error');
+      setResultMessage("Failed to send message. Please check your connection.");
+    }
+  };
+
   return (
     <section id="contact" className="py-24 bg-muted/30 relative">
       <div className="container mx-auto px-6 relative z-10">
@@ -57,27 +92,46 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="bg-background p-8 rounded-2xl shadow-xl border border-border"
           >
-            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">First Name</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-lg bg-muted border-transparent focus:border-primary focus:bg-background focus:ring-0 transition-all outline-none" placeholder="John" />
+                  <label htmlFor="firstName" className="block text-sm font-medium text-foreground mb-2">First Name</label>
+                  <input id="firstName" name="first_name" type="text" required className="w-full px-4 py-3 rounded-lg bg-muted border-transparent focus:border-primary focus:bg-background focus:ring-0 transition-all outline-none" placeholder="John" />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-foreground mb-2">Last Name</label>
-                  <input type="text" className="w-full px-4 py-3 rounded-lg bg-muted border-transparent focus:border-primary focus:bg-background focus:ring-0 transition-all outline-none" placeholder="Doe" />
+                  <label htmlFor="lastName" className="block text-sm font-medium text-foreground mb-2">Last Name</label>
+                  <input id="lastName" name="last_name" type="text" required className="w-full px-4 py-3 rounded-lg bg-muted border-transparent focus:border-primary focus:bg-background focus:ring-0 transition-all outline-none" placeholder="Doe" />
                 </div>
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Email Address</label>
-                <input type="email" className="w-full px-4 py-3 rounded-lg bg-muted border-transparent focus:border-primary focus:bg-background focus:ring-0 transition-all outline-none" placeholder="john@company.com" />
+                <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">Email Address</label>
+                <input id="email" name="email" type="email" required className="w-full px-4 py-3 rounded-lg bg-muted border-transparent focus:border-primary focus:bg-background focus:ring-0 transition-all outline-none" placeholder="john@company.com" />
               </div>
               <div>
-                <label className="block text-sm font-medium text-foreground mb-2">Message</label>
-                <textarea rows="4" className="w-full px-4 py-3 rounded-lg bg-muted border-transparent focus:border-primary focus:bg-background focus:ring-0 transition-all outline-none" placeholder="How can we help you?"></textarea>
+                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">Message</label>
+                <textarea id="message" name="message" rows="4" required className="w-full px-4 py-3 rounded-lg bg-muted border-transparent focus:border-primary focus:bg-background focus:ring-0 transition-all outline-none" placeholder="How can we help you?"></textarea>
               </div>
-              <button className="w-full py-4 bg-primary hover:bg-blue-700 text-white rounded-lg font-bold flex items-center justify-center space-x-2 transition-colors">
-                <span>Send Message</span>
+              
+              {status === 'success' && (
+                <div className="p-4 bg-green-500/10 border border-green-500/50 rounded-lg flex items-center space-x-3 text-green-600 dark:text-green-400">
+                  <CheckCircle2 size={20} />
+                  <span>{resultMessage}</span>
+                </div>
+              )}
+
+              {status === 'error' && (
+                <div className="p-4 bg-red-500/10 border border-red-500/50 rounded-lg flex items-center space-x-3 text-red-600 dark:text-red-400">
+                  <AlertCircle size={20} />
+                  <span>{resultMessage}</span>
+                </div>
+              )}
+
+              <button 
+                type="submit" 
+                disabled={status === 'submitting'}
+                className="w-full py-4 bg-primary hover:bg-blue-700 disabled:opacity-70 disabled:cursor-not-allowed text-white rounded-lg font-bold flex items-center justify-center space-x-2 transition-colors"
+              >
+                <span>{status === 'submitting' ? 'Sending...' : 'Send Message'}</span>
                 <Send size={18} />
               </button>
             </form>
