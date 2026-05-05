@@ -60,7 +60,7 @@ export default function Contact() {
                   <MapPin />
                 </div>
                 <div>
-                  <h5 className="font-bold text-foreground">Headquarters</h5>
+                  <h5 className="font-bold text-foreground">Head Office</h5>
                   <p className="text-muted-foreground">Chennai, Tamil Nadu, India</p>
                 </div>
               </div>
@@ -79,7 +79,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <h5 className="font-bold text-foreground">Phone</h5>
-                  <p className="text-muted-foreground">+91 98765 43210</p>
+                  <p className="text-muted-foreground">+91 9840 669339</p>
                 </div>
               </div>
             </div>

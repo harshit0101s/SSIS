@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import heroBg from '/hero_bg.png'; // Will copy generated image to public
 
 export default function Hero() {
@@ -38,12 +39,12 @@ export default function Hero() {
           transition={{ duration: 0.5, delay: 1 }}
           className="flex flex-col sm:flex-row justify-center gap-4"
         >
-          <a href="#services" className="px-8 py-4 bg-primary hover:bg-blue-700 text-white rounded-full font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/30">
+          <Link to="/services" className="px-8 py-4 bg-primary hover:bg-blue-700 text-white rounded-full font-semibold transition-all hover:scale-105 active:scale-95 shadow-lg shadow-primary/30">
             Explore Services
-          </a>
-          <a href="#contact" className="px-8 py-4 bg-transparent border border-white hover:bg-white hover:text-black text-white rounded-full font-semibold transition-all hover:scale-105 active:scale-95">
+          </Link>
+          <Link to="/contact" className="px-8 py-4 bg-transparent border border-white hover:bg-white hover:text-black text-white rounded-full font-semibold transition-all hover:scale-105 active:scale-95">
             Contact Us
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
