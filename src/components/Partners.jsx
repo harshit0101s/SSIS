@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 
 const partners = [
-  "JSP", "JSW", "SAIL", "TATA STEEL"
+  "JSP", "JSW", "SAIL", "TATA STEEL", "IOCL", "CPCL", "BPCL", "HPCL", "Appollo", "VSP", "NMDC", "L&T Hydro Carbons", "Manaksia Coated Steel", "GoodLuck Steels", "JINDAL SAW", "JSL", "Bridge & Roof", "Steel 1", "JB Infra"
 ];
 
 export default function Partners() {

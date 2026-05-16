@@ -39,7 +39,7 @@ export default function PricingSection() {
               </li>
             </ul>
             
-            <Link to="/about" className="w-full py-4 bg-[#1e2433] hover:bg-[#2a3143] text-white rounded-xl font-bold transition-colors text-center block">
+            <Link to="/consultation" className="w-full py-4 bg-[#1e2433] hover:bg-[#2a3143] text-white rounded-xl font-bold transition-colors text-center block">
               Get Started
             </Link>
           </div>

@@ -48,7 +48,7 @@ export default function About() {
             <p className="font-semibold text-foreground text-xl mb-6">Dear Subscribers and Readers,</p>
 
             <p>
-              Steel Singer info services is one of the largest integrated steel service provider in India and abroad. Steel Singer Info Services is led by Mr. Hemant Sharma having experience of more than 27 years in Steel Industries. He has done Master of Business Administration and specialisation in Sales and Marketing. He has worked almost in all the leading integrated steel mills in different locations of India.
+              Steel Singer info services is one of the largest integrated steel service provider in India and abroad. Steel Singer Info Services is led by Mr. Hemant Sharma having experience of more than 35 years in Steel Industries. He has done Master of Business Administration and specialisation in Sales and Marketing. He has worked almost in all the leading integrated steel mills in different locations of India.
             </p>
 
             <p>
@@ -56,11 +56,7 @@ export default function About() {
             </p>
 
             <p>
-              As we battle the economic impact of the pandemic, we need your support even more, so that we can continue to offer you more quality content. Our subscription model has seen an encouraging response from many of you, who have subscribed to us.
-            </p>
-
-            <p>
-              Your encouragement and constant feed back on how to improve our offering has only made us resolve and commitment to these ideals stronger. Even during difficult times arising out of COVID-19, we continued to keep up informed and updated with credible steel news and price authoritative views and incisive commentary on all steel pricing on pan India level.
+              Steel Singer gives region-wise market updates so that all our subscribers will never be out of touch with the global scenario of steel.
             </p>
 
             <p className="font-semibold italic text-foreground mt-8 border-l-4 border-secondary pl-4">

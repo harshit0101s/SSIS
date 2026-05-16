@@ -9,7 +9,7 @@ export default function ConsultationForm() {
     e.preventDefault();
     setStatus('submitting');
     const formData = new FormData(e.target);
-    formData.append("access_key", "YOUR_WEB3FORMS_ACCESS_KEY_HERE");
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY_HERE");
     formData.append("subject", "New Consultation Request");
 
     try {
