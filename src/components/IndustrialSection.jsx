@@ -51,11 +51,11 @@ function StatCard({ value, suffix, label, detail, delay }) {
 
 // ── Supply chain steps ───────────────────────────────────────────────────────
 const chainSteps = [
-  { icon: Factory,   label: 'Steel Mill',      sub: 'Global sourcing'      },
-  { icon: Cog,       label: 'Processing',       sub: 'Quality control'      },
-  { icon: Truck,     label: 'Logistics',        sub: 'Fast dispatch'        },
-  { icon: Package,   label: 'Delivery',         sub: 'On-time, every time'  },
-  { icon: Building2, label: 'Client Factory',   sub: 'Production ready'     },
+  { icon: Factory, label: 'Steel Mill', sub: 'Global sourcing' },
+  { icon: Cog, label: 'Processing', sub: 'Quality control' },
+  { icon: Truck, label: 'Logistics', sub: 'Fast dispatch' },
+  { icon: Package, label: 'Delivery', sub: 'On-time, every time' },
+  { icon: Building2, label: 'Client Factory', sub: 'Production ready' },
 ];
 
 // ── Industry cards ───────────────────────────────────────────────────────────
@@ -94,10 +94,10 @@ const industries = [
 
 // ── Stats data ───────────────────────────────────────────────────────────────
 const stats = [
-  { value: 35,  suffix: '+', label: 'Years Experience'},
-  { value: 5000, suffix: '+', label: 'MT Delivered'},
-  { value: 3,  suffix: '+', label: 'Countries Served'},
-  { value: 150, suffix: '+', label: 'Industrial Clients & Subscribers'},
+  { value: 7, suffix: '+', label: 'Years Experience' },
+  { value: 5000, suffix: '+', label: 'MT Delivered' },
+  { value: 3, suffix: '+', label: 'Countries Served' },
+  { value: 150, suffix: '+', label: 'Industrial Clients & Subscribers' },
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
