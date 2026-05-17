@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, Fragment } from 'react';
 import { motion, useInView } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -196,6 +196,38 @@ export default function IndustrialSection() {
           2. SUPPLY CHAIN IN MOTION
       ───────────────────────────────────────────────────────────────────── */}
       <section className="py-24 bg-[#070c18] relative overflow-hidden">
+        <style>{`
+          /* 5.6s cycle (4 × 1.4s), no gaps — each dot takes exactly 25% of the cycle.
+             i=0: 0–25%   i=1: 25–50%   i=2: 50–75%   i=3: 75–100% */
+          @keyframes supplyDot0 {
+            0%    { left: 0;                  opacity: 1; }
+            25%   { left: calc(100% - 10px); opacity: 1; }
+            25.1% { left: 0;                  opacity: 0; }
+            100%  { left: 0;                  opacity: 0; }
+          }
+          @keyframes supplyDot1 {
+            0%    { left: 0;                  opacity: 0; }
+            24.9% { left: 0;                  opacity: 0; }
+            25%   { left: 0;                  opacity: 1; }
+            50%   { left: calc(100% - 10px); opacity: 1; }
+            50.1% { left: 0;                  opacity: 0; }
+            100%  { left: 0;                  opacity: 0; }
+          }
+          @keyframes supplyDot2 {
+            0%    { left: 0;                  opacity: 0; }
+            49.9% { left: 0;                  opacity: 0; }
+            50%   { left: 0;                  opacity: 1; }
+            75%   { left: calc(100% - 10px); opacity: 1; }
+            75.1% { left: 0;                  opacity: 0; }
+            100%  { left: 0;                  opacity: 0; }
+          }
+          @keyframes supplyDot3 {
+            0%    { left: 0;                  opacity: 0; }
+            74.9% { left: 0;                  opacity: 0; }
+            75%   { left: 0;                  opacity: 1; }
+            100%  { left: calc(100% - 10px); opacity: 1; }
+          }
+        `}</style>
         {/* Subtle industrial grid */}
         <div
           className="absolute inset-0 opacity-[0.04]"
@@ -222,53 +254,55 @@ export default function IndustrialSection() {
             </p>
           </motion.div>
 
-          {/* Desktop: horizontal flow */}
-          <div className="hidden md:flex items-center justify-between gap-2">
+          {/* Desktop: fixed-width cards ensure all 4 connectors are perfectly equal */}
+          <div className="hidden md:flex items-center">
             {chainSteps.map((step, i) => {
               const Icon = step.icon;
               return (
-                <div key={i} className="flex items-center flex-1">
-                  {/* Card */}
+                <Fragment key={i}>
+                  {/* Card — identical w-[152px] for every step */}
                   <motion.div
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.12 }}
                     whileHover={{ y: -8 }}
-                    className="group relative flex flex-col items-center text-center px-6 py-8 rounded-2xl bg-white/[0.04] border border-white/[0.09] hover:border-orange-500/50 hover:bg-orange-500/[0.07] transition-all duration-300 cursor-default min-w-[150px] flex-shrink-0 shadow-lg"
+                    className="group relative flex flex-col items-center text-center px-3 py-6 rounded-2xl bg-white/[0.04] border border-white/[0.09] hover:border-orange-500/50 hover:bg-orange-500/[0.07] transition-all duration-300 cursor-default w-[152px] flex-none shadow-lg"
                   >
                     <span className="absolute -top-3 -right-3 w-7 h-7 rounded-full bg-orange-500 text-black text-xs font-black flex items-center justify-center z-10 shadow-md shadow-orange-500/30">
                       {i + 1}
                     </span>
-                    <div className="w-16 h-16 rounded-2xl bg-orange-500/10 group-hover:bg-orange-500/20 flex items-center justify-center mb-4 transition-all">
-                      <Icon size={30} className="text-orange-400" />
+                    <div className="w-14 h-14 rounded-2xl bg-orange-500/10 group-hover:bg-orange-500/20 flex items-center justify-center mb-3 transition-all">
+                      <Icon size={26} className="text-orange-400" />
                     </div>
-                    <p className="font-bold text-white text-sm mb-1">{step.label}</p>
-                    <p className="text-gray-500 text-xs leading-snug">{step.sub}</p>
+                    <p className="font-bold text-white text-sm mb-1 whitespace-nowrap">{step.label}</p>
+                    <p className="text-gray-500 text-[11px] leading-snug">{step.sub}</p>
                   </motion.div>
 
-                  {/* Animated connector */}
+                  {/* Connector — flex-1 guarantees equal width for all 4 */}
                   {i < chainSteps.length - 1 && (
                     <motion.div
                       initial={{ opacity: 0, scaleX: 0 }}
                       whileInView={{ opacity: 1, scaleX: 1 }}
                       viewport={{ once: true }}
-                      transition={{ duration: 0.5, delay: i * 0.12 + 0.3 }}
-                      className="relative flex-1 mx-3 h-px origin-left"
+                      transition={{ duration: 0.4, delay: i * 0.12 + 0.3 }}
+                      className="relative flex-1 h-px origin-left overflow-visible"
                     >
-                      <div className="absolute inset-0 bg-gradient-to-r from-orange-500/60 to-orange-500/20" />
-                      <motion.div
-                        className="absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-orange-400 shadow shadow-orange-400/70"
-                        animate={{ x: ['0%', '300%'] }}
-                        transition={{ duration: 1.8, repeat: Infinity, ease: 'linear', delay: i * 0.5 }}
-                      />
-                      <ChevronRight
-                        size={16}
-                        className="absolute right-0 top-1/2 -translate-y-1/2 text-orange-500/60"
+                      {/* Line */}
+                      <div className="absolute inset-0 bg-gradient-to-r from-orange-500/50 via-orange-400/40 to-orange-500/20" />
+                      {/* Arrowhead at the end */}
+                      <div className="absolute right-0 top-1/2 -translate-y-1/2 -translate-x-0 border-t border-r border-orange-500/50 w-2 h-2 rotate-45" />
+                      {/* Travelling dot — CSS animation keeps phase offset every cycle */}
+                      <div
+                        className="absolute top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-orange-400"
+                        style={{
+                          boxShadow: '0 0 6px 2px rgba(251,146,60,0.6)',
+                          animation: `supplyDot${i} 5.6s linear infinite`,
+                        }}
                       />
                     </motion.div>
                   )}
-                </div>
+                </Fragment>
               );
             })}
           </div>
