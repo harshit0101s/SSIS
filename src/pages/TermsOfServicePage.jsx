@@ -16,6 +16,7 @@ const sections = [
       'A buy/sell platform for connecting steel buyers and sellers',
       'Consultation scheduling for steel procurement and trading advisory',
       'General information about steel products, grades, and market conditions',
+      'Annual subscriptions'
     ],
     footnote:
       'All market intelligence and data provided are for informational and decision-support purposes only. They do not constitute professional financial, legal, or trading advice.',

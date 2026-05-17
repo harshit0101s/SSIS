@@ -97,7 +97,7 @@ const stats = [
   { value: 35,  suffix: '+', label: 'Years Experience'},
   { value: 5000, suffix: '+', label: 'MT Delivered'},
   { value: 3,  suffix: '+', label: 'Countries Served'},
-  { value: 150, suffix: '+', label: 'Industrial Clients'},
+  { value: 150, suffix: '+', label: 'Industrial Clients & Subscribers'},
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
