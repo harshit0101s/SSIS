@@ -13,7 +13,7 @@ export default function Contact() {
 
     // IMPORTANT: Replace this placeholder with your actual Web3Forms access key
     // You can get one for free at https://web3forms.com/
-    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_WEB3FORMS_ACCESS_KEY_HERE");
+    formData.append("access_key", import.meta.env.VITE_WEB3FORMS_ACCESS_KEY);
 
     try {
       const response = await fetch("https://api.web3forms.com/submit", {
@@ -127,6 +127,9 @@ export default function Contact() {
                   <span>{resultMessage}</span>
                 </div>
               )}
+
+              {/* Honeypot anti-spam field — must stay hidden */}
+              <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
 
               <button 
                 type="submit" 

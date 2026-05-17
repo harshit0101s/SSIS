@@ -114,6 +114,9 @@ export default function BuySellForm() {
           </div>
         )}
 
+        {/* Honeypot anti-spam field — must stay hidden */}
+        <input type="checkbox" name="botcheck" className="hidden" style={{ display: 'none' }} />
+
         <button 
           type="submit" 
           disabled={status === 'submitting'}

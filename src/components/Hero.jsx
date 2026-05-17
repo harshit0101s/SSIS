@@ -13,7 +13,7 @@ export default function Hero() {
 
       <div className="container mx-auto px-6 relative z-[2] text-center pointer-events-none">
         <motion.h1 
-          className="text-5xl md:text-7xl font-extrabold tracking-tight mb-6 flex flex-wrap justify-center leading-tight"
+          className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 flex flex-wrap justify-center leading-tight gap-x-[0.25em]"
           initial="hidden"
           animate="visible"
           variants={{
@@ -24,21 +24,28 @@ export default function Hero() {
             }
           }}
         >
+          {/* Each word wrapped in whitespace-nowrap so letters never split mid-word */}
           {[
-            ...Array.from("FORGING THE ").map(c => ({ char: c, class: "text-white" })),
-            ...Array.from("FUTURE").map(c => ({ char: c, class: "text-secondary" })),
-            ...Array.from(" OF STEEL").map(c => ({ char: c, class: "text-white" }))
-          ].map((item, index) => (
-            <motion.span 
-              key={index} 
-              className={item.class}
-              variants={{ 
-                hidden: { opacity: 0, display: 'none' }, 
-                visible: { opacity: 1, display: 'inline-block' } 
-              }}
-            >
-              {item.char === " " ? "\u00A0" : item.char}
-            </motion.span>
+            { word: "FORGING", cls: "text-white" },
+            { word: "THE", cls: "text-white" },
+            { word: "FUTURE", cls: "text-secondary" },
+            { word: "OF", cls: "text-white" },
+            { word: "STEEL", cls: "text-white" },
+          ].map((group, wi) => (
+            <span key={wi} className="whitespace-nowrap inline-flex">
+              {Array.from(group.word).map((char, ci) => (
+                <motion.span
+                  key={`${wi}-${ci}`}
+                  className={group.cls}
+                  variants={{
+                    hidden: { opacity: 0, display: 'none' },
+                    visible: { opacity: 1, display: 'inline-block' }
+                  }}
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </span>
           ))}
         </motion.h1>
         
