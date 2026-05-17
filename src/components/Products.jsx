@@ -26,7 +26,7 @@ export default function Products() {
           <h2 className="text-sm font-bold text-secondary uppercase tracking-[0.3em] mb-4">Our Catalog</h2>
           <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Premium Steel Products</h3>
           <div className="inline-block bg-primary/10 border border-primary/20 text-primary px-4 py-1 rounded-full text-xs font-black uppercase tracking-widest mb-6">
-            All Integrated Trading House
+            An Integrated Trading House
           </div>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             We provide a comprehensive range of raw materials, semi-finished, and finished steel products to meet the diverse needs of the global industry.
