@@ -1,17 +1,40 @@
 import { Check } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 
 export default function PricingSection() {
   return (
     <section className="py-24 bg-[#0a0e17]">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-xs font-black text-orange-500 uppercase tracking-[0.2em] mb-4">Pricing Plans</h2>
-          <h3 className="text-4xl md:text-5xl font-bold text-white mb-6">Unlock Full Market Intelligence</h3>
-          <p className="text-slate-400 max-w-2xl mx-auto text-lg">
+          <motion.h2 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-xs font-black text-orange-500 uppercase tracking-[0.2em] mb-4"
+          >
+            Pricing Plans
+          </motion.h2>
+          <motion.h3 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-4xl md:text-5xl font-bold text-white mb-6"
+          >
+            Unlock Full Market Intelligence
+          </motion.h3>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-slate-400 max-w-2xl mx-auto text-lg"
+          >
             Become an SSIS Subscriber to gain exclusive access to daily reports, WhatsApp updates,
             and full trading privileges.
-          </p>
+          </motion.p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 max-w-5xl mx-auto gap-8 items-stretch">

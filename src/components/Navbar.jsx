@@ -27,7 +27,14 @@ export default function Navbar() {
         >
           <Link to="/" className="flex items-center gap-3">
             <img src="/logo.png" alt="Steel Singer Logo" className="w-10 h-10 object-contain rounded-full" />
-            <span><span className="text-orange-600">STEEL SINGER</span> INFO SERVICES</span>
+            <span className="flex flex-col leading-none gap-0.5">
+              <span className="text-[15px] font-black tracking-[0.12em] text-white uppercase">
+                <span className="text-orange-500">STEEL</span> SINGER
+              </span>
+              <span className="text-[9px] font-semibold tracking-[0.45em] text-gray-500 uppercase text-center">
+                Info Services
+              </span>
+            </span>
           </Link>
         </motion.div>
 

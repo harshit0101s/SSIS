@@ -22,6 +22,15 @@ export default {
           DEFAULT: 'var(--muted)',
           foreground: 'var(--muted-foreground)',
         },
+      },
+      animation: {
+        marquee: 'marquee 80s linear infinite',
+      },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        }
       }
     },
   },

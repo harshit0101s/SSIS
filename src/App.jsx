@@ -11,6 +11,9 @@ import ContactUs from './pages/ContactUs';
 import BuySell from './pages/BuySell';
 import Consultation from './pages/Consultation';
 import ProductsPage from './pages/ProductsPage';
+import DisclaimerPage from './pages/DisclaimerPage';
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage';
+import TermsOfServicePage from './pages/TermsOfServicePage';
 
 function App() {
   return (
@@ -27,6 +30,9 @@ function App() {
             <Route path="/buy-sell" element={<BuySell />} />
             <Route path="/consultation" element={<Consultation />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/disclaimer" element={<DisclaimerPage />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicyPage />} />
+            <Route path="/terms-of-service" element={<TermsOfServicePage />} />
           </Routes>
         </main>
         <Footer />

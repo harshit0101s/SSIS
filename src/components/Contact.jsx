@@ -71,6 +71,7 @@ export default function Contact() {
                 <div>
                   <h5 className="font-bold text-foreground">Email</h5>
                   <p className="text-muted-foreground">info@steelsinger.com</p>
+                  <p className="text-muted-foreground">steelsingertrade@gmail.com</p>
                 </div>
               </div>
               <div className="flex items-center space-x-4">
@@ -80,6 +81,7 @@ export default function Contact() {
                 <div>
                   <h5 className="font-bold text-foreground">Phone</h5>
                   <p className="text-muted-foreground">+91 9840 669339</p>
+                  <p className="text-muted-foreground">+91 6384 111100</p>
                 </div>
               </div>
             </div>
